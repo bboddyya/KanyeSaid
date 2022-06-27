@@ -1,0 +1,62 @@
+.wrap {
+  max-width: 85%;
+  min-width: 350px;
+}
+
+.quote-wrapper-enter {
+  opacity: 1;
+  transform: scale(0.9) translateX(-500px);
+}
+.quote-wrapper-enter-active {
+  opacity: 1;
+  transform: scale(1.5) translateX(0px);
+  transition: opacity 500ms, transform 200ms;
+}
+.quote-wrapper-exit {
+  opacity: 1;
+  transform: scale(0.9) translateX(-100px);
+  transition: opacity 500ms, transform 200ms;
+}
+
+.quote-wrapper-exit-active {
+  opacity: 1;
+  transform: scale(1) translateX(0px);
+  transition: opacity 500ms, transform 200ms;
+}
+
+.quote-wrapper-exit-done {
+}
+
+.quote-wrapper {
+  width: 100%;
+  min-height: 60px;
+  font-weight: 600;
+  font-size: 35px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 958px) {
+  .quote-wrapper {
+    width: 100%;
+    min-height: 60px;
+    font-weight: 600;
+    font-size: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .quote-wrapper {
+    width: 100%;
+    min-height: 40px;
+    font-weight: 600;
+    font-size: 22px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+  }
+}

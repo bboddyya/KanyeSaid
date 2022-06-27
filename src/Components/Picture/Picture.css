@@ -1,0 +1,108 @@
+.picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+  padding-right: 15px;
+  position: relative;
+}
+
+.mute {
+  position: absolute;
+
+  top: 10px;
+}
+
+.spinner {
+  position: absolute;
+  top: 75px;
+  left: 95px;
+  color: rgba(255, 255, 255, 0.846);
+  font-size: 45px;
+}
+
+.spinOn {
+  animation: spin 1s ease infinite;
+}
+
+.spinStop {
+  animation: spin 0.5s ease forwards;
+}
+
+.spinOff {
+  animation: spinOff 1s ease forwards;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinOff {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  85% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.picture img {
+  width: 200px;
+}
+
+.picture-enter {
+  opacity: 0;
+}
+.picture-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.picture-exit {
+  opacity: 1;
+}
+.picture-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+@media (max-width: 958px) {
+  .spinner {
+    position: absolute;
+    top: 60px;
+    left: 75px;
+    color: rgba(255, 255, 255, 0.846);
+    font-size: 35px;
+  }
+
+  .picture img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 750px) {
+  .spinner {
+    position: absolute;
+    top: 60px;
+    left: 65px;
+    color: rgba(255, 255, 255, 0.846);
+    font-size: 25px;
+  }
+
+  .picture img {
+    width: 130px;
+  }
+}
