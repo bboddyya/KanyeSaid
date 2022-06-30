@@ -1,6 +1,6 @@
 import "./Player.css";
 import song from "./mp3/Kanye West - Father Stretch My Hands Pt. 1.mp3";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../../Context/Context";
 
 const Player = () => {
@@ -9,23 +9,23 @@ const Player = () => {
   const audioPlayer = useRef();
   const progressBar = useRef();
 
+  const [audio] = useState(new Audio(song));
+
   useEffect(() => {
-    const audio = document.getElementById("audio");
     audio.volume = 0.05;
-    isPlaying && audioPlayer.current.play();
+    isPlaying && audio.play();
   }, [isPlaying]);
 
-  const whilePlaying = () => {
-    const progress =
-      (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100;
-    setDuration(progress);
+  // const whilePlaying = () => {
+  //   const progress =
+  //     (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100;
+  //   setDuration(progress);
 
-    requestAnimationFrame(whilePlaying);
-  };
-  requestAnimationFrame(whilePlaying);
+  //   requestAnimationFrame(whilePlaying);
+  // };
+  // requestAnimationFrame(whilePlaying);
 
   const changeMute = () => {
-    const audio = document.getElementById("audio");
     setMuted(!muted);
     audio.volume = muted ? 0.05 : 0;
   };
@@ -35,11 +35,12 @@ const Player = () => {
       <button className="mute" onClick={changeMute}>
         {muted ? `unmute` : `mute`}
       </button>
-      <audio src={song} ref={audioPlayer} id="audio" />
+
+      {/* <audio autoPlay src={song} ref={audioPlayer} id="audio" /> */}
       <div
         className="progress"
         ref={progressBar}
-        style={{ width: `${duration}%` }}
+        // style={{ width: `${duration}%` }}
       />
     </div>
   );

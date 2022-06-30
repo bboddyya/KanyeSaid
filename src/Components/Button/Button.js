@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import "./Button.css";
+import { useOnKey } from "../../hooks/useOnKey";
 
 function Button() {
   const { setQuote, setVisionQuote, setIsPlaying, spin, setSpin } =
@@ -10,25 +11,27 @@ function Button() {
   async function getQuote() {
     const data = await fetch("https://api.kanye.rest");
     const json = await data.json();
-    await setSpin(false);
-    await setVisionQuote(true);
-    await setQuote(json.quote.toUpperCase());
-    await setIsPlaying(true);
+    setSpin(false);
+    setVisionQuote(true);
+    setQuote(json.quote.toUpperCase());
+    setIsPlaying(true);
   }
 
-  const onKeyDown = (e) => {
-    if (e.key === "Enter") {
-      getQuote();
-    }
-  };
+  const key = useOnKey();
+
+  console.log(key);
 
   useEffect(() => {
-    document.addEventListener("keydown", onKeyDown);
+    if (key === "Enter") {
+      getQuote();
+    }
+  }, [key]);
 
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, []);
+  // const onKeyDown = (e) => {
+  //   if (key === "Enter") {
+  //     getQuote();
+  //   }
+  // };
 
   return (
     <div className="button-wrapper">
