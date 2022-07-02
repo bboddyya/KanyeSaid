@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import "./Button.css";
-import { useOnKey } from "../../hooks/useOnKey";
-
+import { useEnterPressed } from "../../hooks/useEnterPressed";
 function Button() {
   const { setQuote, setVisionQuote, setIsPlaying, spin, setSpin } =
     useContext(Context);
@@ -17,21 +16,13 @@ function Button() {
     setIsPlaying(true);
   }
 
-  const key = useOnKey();
-
-  console.log(key);
+  const key = useEnterPressed();
 
   useEffect(() => {
-    if (key === "Enter") {
+    if (key) {
       getQuote();
     }
   }, [key]);
-
-  // const onKeyDown = (e) => {
-  //   if (key === "Enter") {
-  //     getQuote();
-  //   }
-  // };
 
   return (
     <div className="button-wrapper">

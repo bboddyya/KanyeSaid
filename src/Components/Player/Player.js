@@ -6,7 +6,6 @@ import { Context } from "../../Context/Context";
 const Player = () => {
   const { isPlaying, duration, setDuration, muted, setMuted } =
     useContext(Context);
-  const audioPlayer = useRef();
   const progressBar = useRef();
 
   const [audio] = useState(new Audio(song));
@@ -16,14 +15,13 @@ const Player = () => {
     isPlaying && audio.play();
   }, [isPlaying]);
 
-  // const whilePlaying = () => {
-  //   const progress =
-  //     (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100;
-  //   setDuration(progress);
+  const whilePlaying = () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    setDuration(progress);
+    requestAnimationFrame(whilePlaying);
+  };
 
-  //   requestAnimationFrame(whilePlaying);
-  // };
-  // requestAnimationFrame(whilePlaying);
+  requestAnimationFrame(whilePlaying);
 
   const changeMute = () => {
     setMuted(!muted);
@@ -35,12 +33,10 @@ const Player = () => {
       <button className="mute" onClick={changeMute}>
         {muted ? `unmute` : `mute`}
       </button>
-
-      {/* <audio autoPlay src={song} ref={audioPlayer} id="audio" /> */}
       <div
         className="progress"
         ref={progressBar}
-        // style={{ width: `${duration}%` }}
+        style={{ width: `${duration}%` }}
       />
     </div>
   );
