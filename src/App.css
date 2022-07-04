@@ -1,0 +1,16 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: Helvetica, sans-serif;
+  word-spacing: 10px;
+  background-color: #f78c58;
+}
+.main-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+}

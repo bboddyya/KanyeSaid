@@ -1,0 +1,11 @@
+.player-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.progress {
+  height: 6px;
+  width: 50%;
+  background-color: #28c2e8;
+}
